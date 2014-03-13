@@ -1,0 +1,35 @@
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<!-- 国际化配置 -->
+	<constant name="struts.custom.i18n.resources" value="validationMessages"></constant>
+	<constant name="struts.i18n.encoding" value="GBK"></constant>
+	
+	
+	<include file="struts-default.xml" />
+	<package name="amigo" extends="struts-default">
+	
+	<interceptors>
+			<interceptor name="sessionInterceptor"
+				class="amigo.ssh.interceptor.SessionInterceptor">
+			</interceptor>
+			<interceptor-stack name="mydefault"> 
+                <interceptor-ref name="sessionInterceptor" />   
+            </interceptor-stack>  
+		</interceptors>
+		
+		<default-interceptor-ref name="defaultStack" /> 
+		
+		<!-- 配置登录的Action -->
+		<action name="reg" class="regAction">
+			<result name="input">/reg.jsp</result>
+			<result name="success">/success.jsp</result>
+			<result name="error">/error.jsp</result>
+			<interceptor-ref name="defaultStack"/> 
+			<interceptor-ref name="mydefault"/>
+		</action>
+	</package>
+</struts>

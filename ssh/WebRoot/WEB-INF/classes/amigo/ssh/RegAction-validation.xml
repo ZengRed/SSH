@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.2//EN" 
+ "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<!-- 用户名校验 -->
+<validators>
+	<field name="user.username">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>${getText("user.username.required")}</message>
+		</field-validator>
+
+		<field-validator type="stringlength">
+			<param name="minLength">5</param>
+			<param name="maxLength">50</param>
+			<message>${getText("user.username.regex")}</message>
+		</field-validator>
+	</field>
+
+	<!-- 密码校验 -->
+	<field name="user.password">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>${getText("user.password.required")}</message>
+		</field-validator>
+
+		<field-validator type="stringlength">
+			<param name="minLength">5</param>
+			<param name="maxLength">50</param>
+			<message>${getText("user.password.regex")}</message>
+		</field-validator>
+	</field>
+
+	<!-- 出生日期校验 -->
+	<field name="user.birthDate">
+		<field-validator type="date">
+			<param name="min">1850-01-01</param>
+			<param name="max">2014-01-01</param>
+			<message>${getText("user.birthDate")}</message>
+		</field-validator>
+	</field>
+
+	<!-- Email校验 -->
+	<field name="user.email">
+		<field-validator type="email">
+			<message>${getText("user.email")}</message>
+		</field-validator>
+	</field>
+
+	<!-- 个人首页校验 -->
+	<field name="user.url">
+		<field-validator type="url">
+			<message>${getText("user.url")}</message>
+		</field-validator>
+	</field>
+
+</validators>
